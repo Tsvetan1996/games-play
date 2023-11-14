@@ -1,10 +1,16 @@
 export default function GameCreate() {
+  const createGameSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const gameData = Object.fromEntries(new FormData(e.currentTarget));
+  };
+
   return (
     <section id="create-page" className="auth">
-      <form id="create">
+      <form id="create" onSubmit={createGameSubmitHandler}>
         <div className="container">
           <h1>Create Game</h1>
-          <label hrmlFor="leg-title">Legendary title:</label>
+          <label htmlFor="leg-title">Legendary title:</label>
           <input
             type="text"
             id="title"
@@ -12,7 +18,7 @@ export default function GameCreate() {
             placeholder="Enter game title..."
           />
 
-          <label hrmlFor="category">Category:</label>
+          <label htmlFor="category">Category:</label>
           <input
             type="text"
             id="category"
@@ -20,7 +26,7 @@ export default function GameCreate() {
             placeholder="Enter game category..."
           />
 
-          <label hrmlFor="levels">MaxLevel:</label>
+          <label htmlFor="levels">MaxLevel:</label>
           <input
             type="number"
             id="maxLevel"
@@ -29,7 +35,7 @@ export default function GameCreate() {
             placeholder="1"
           />
 
-          <label hrmlFor="game-img">Image:</label>
+          <label htmlFor="game-img">Image:</label>
           <input
             type="text"
             id="imageUrl"
@@ -37,7 +43,7 @@ export default function GameCreate() {
             placeholder="Upload a photo..."
           />
 
-          <label hrmlFor="summary">Summary:</label>
+          <label htmlFor="summary">Summary:</label>
           <textarea name="summary" id="summary"></textarea>
           <input className="btn submit" type="submit" value="Create Game" />
         </div>
