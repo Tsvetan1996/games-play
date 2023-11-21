@@ -6,7 +6,7 @@ export default function Register() {
           <div className="brand-logo"></div>
           <h1>Register</h1>
 
-          <label hrmlFor="email">Email:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
@@ -14,10 +14,10 @@ export default function Register() {
             placeholder="maria@email.com"
           />
 
-          <label hrmlFor="pass">Password:</label>
+          <label htmlFor="pass">Password:</label>
           <input type="password" name="password" id="register-password" />
 
-          <label hrmlFor="con-pass">Confirm Password:</label>
+          <label htmlFor="con-pass">Confirm Password:</label>
           <input
             type="password"
             name="confirm-password"
