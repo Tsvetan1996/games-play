@@ -8,7 +8,7 @@ import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import GameDetails from "./components/game-details/GameDetails";
 import { useState } from "react";
-import AuthContext from "./contexts/authContext";
+import AuthContext from "./contexts/AuthContext";
 
 function App() {
   const [auth, setAuth] = useState({});
