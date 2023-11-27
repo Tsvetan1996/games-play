@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import * as authService from "./services/authService";
 import { AuthProvider } from "./contexts/AuthContext";
 import Path from "./paths";
 
@@ -15,49 +13,8 @@ import Register from "./components/register/Register";
 import GameDetails from "./components/game-details/GameDetails";
 
 function App() {
-  const navigate = useNavigate();
-  const [auth, setAuth] = useState(() => {
-    localStorage.removeItem("accessToken");
-
-    return {};
-  });
-
-  const loginSubmitHandler = async (values) => {
-    const result = await authService.login(values.email, values.password);
-
-    setAuth(result);
-
-    localStorage.setItem("accessToken", result.accessToken);
-
-    navigate(Path.Home);
-  };
-
-  const registerSubmitHandler = async (values) => {
-    const result = await authService.register(values.email, values.password);
-
-    setAuth(result);
-
-    localStorage.setItem("accessToken", result.accessToken);
-
-    navigate(Path.Home);
-  };
-
-  const logoutHandler = () => {
-    setAuth({});
-
-    localStorage.removeItem("accessToken");
-  };
-
-  const values = {
-    loginSubmitHandler,
-    registerSubmitHandler,
-    logoutHandler,
-    username: auth.username || auth.email,
-    email: auth.email,
-    isAuthenticated: !!auth.email,
-  };
   return (
-    <AuthProvider value={values}>
+    <AuthProvider>
       <div id="box">
         <Header />
 
@@ -65,10 +22,7 @@ function App() {
           <Route path={Path.Home} element={<Home />} />
           <Route path="/games" element={<GameList />} />
           <Route path="/games/create" element={<GameCreate />} />
-          <Route
-            path="/login"
-            element={<Login loginSubmitHandler={loginSubmitHandler} />}
-          />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/games/:gameId" element={<GameDetails />} />
           <Route path={Path.Logout} element={<Logout />} />
